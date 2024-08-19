@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/form.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="form-heading">New Message:</h1>
+    <div class="form-container">
+        <!-- On "submit" action of the form, sends a post request + its info to "/new".-->
+        <form action="/new" method="POST" class="form">
+            <div class="input-container">
+                <div class="input-item">
+                    <label for="user">Username:</label>
+                    <input required=true type="text" name="user" id="user" placeholder="Your username...">
+                </div>
+
+                <div class="input-item">
+                    <label for="text">Message:</label>
+                    <input required=true type="text" name="text" id="text" placeholder="Enter your message...">
+                </div>
+            </div>
+
+            <div class="form-btn-container">
+                <button class="cancel-btn"><a href="/">Cancel</a></button> <!-- Cancel btn directrs to "/" path. -->
+                <input class="submit-btn"type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

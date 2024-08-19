@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="home-heading">Your Message Board</h1>
+    <div class="messages-container">
+        <% messages.map((message) => {%>
+            <div class="message-item">
+                <div class="message-user"><%=message.user%>:</div>
+                <div class="message-text"><%=message.text%></div>
+                <div class="message-date">(<%=message.added%>)</div>
+            </div>
+        <%})%>
+    </div>
+    <button class="new-msg-btn"><a href="./new">New Message</a></button> <!-- Redirect to ./new path -->
+
+</body>
+</html>
