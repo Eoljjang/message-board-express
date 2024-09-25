@@ -1,7 +1,17 @@
+const [getAllMessages, postMessage] = require("./database/queries.js"); // import queries.
+
 // Logic for opening the homepage
-exports.homePage = (req, res) => {
+exports.homePage = async (req, res) => {
     // To-Do: Open the database, get all content and pass it as "messages";
-    res.render("pages/index", {messages: messages});
+    try{
+        const allMessages = await getAllMessages();
+        console.log(allMessages);
+        res.render("pages/index", {messages: allMessages});
+    }
+    catch(error){
+        res.render("pages/error_page", {error: error});
+    }
+
 }
 
 // Logic for opening the page to add a new user
@@ -11,15 +21,16 @@ exports.formPage = (req, res) => {
 
 
 // Logic for adding a new message.
-exports.newMessage = (req, res) => {
+exports.newMessage = async (req, res) => {
     // NEW: On the submit POST, it adds it to the database instead.
+    try{
+        await postMessage(req.body.username, req.body.message);
+    }
+    catch(error){
+        res.render("pages/error_page", {error: error});
+    }
 
-
-
-    // Re-directs user back to the "/" path.
-    // The "/" path already sees the updated "messages" array.
-    // So there's no need to do another res.render() with the data. (save some performnace).
+    // Re-direct user back to "/". Note this simply runs the controller "homePage" function
+    // which goes into the DB and gets all the messages and displays them.
     res.redirect("/");
 }
-
-// Opens database, gets messages.
