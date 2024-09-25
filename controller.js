@@ -6,7 +6,7 @@ exports.homePage = async (req, res) => {
     try{
         const allMessages = await getAllMessages();
         console.log(allMessages);
-        res.render("pages/index", {messages: allMessages});
+        res.render("pages/index", {messages: allMessages, title: "Home Page"});
     }
     catch(error){
         res.render("pages/error_page", {error: error});
@@ -16,7 +16,7 @@ exports.homePage = async (req, res) => {
 
 // Logic for opening the page to add a new user
 exports.formPage = (req, res) => {
-    res.render("pages/form", {hi: "Hi"});
+    res.render("pages/form", {title: "New Message Page"});
 }
 
 
